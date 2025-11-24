@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>渡识 DoShare - 数据集导航与学习共享平台</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+<body>
+
+    <canvas id="starfield"></canvas>
+    
+    <header class="header">
+        <a href="/login" class="login-button">log in</a>
+    </header>
+
+    <main class="main-content">
+        <h1 class="site-title">渡识 DoShare</h1>
+
+        <div class="search-area">
+            <input type="text" 
+                   placeholder="搜索想要的数据集类型，例如：机器学习、医疗图像、环境数据..." 
+                   class="search-input">
+            <button class="search-button">
+                <i class="fas fa-search"></i>
+            </button>
+        </div>
+
+        <div class="bubbles-container">
+            <a href="/forum" class="bubble bubble-1">交流论坛</a>
+            <a href="/learn" class="bubble bubble-2">学习使用数据集</a>
+            <a href="/feedback" class="bubble bubble-3">问题反馈</a>
+        </div>
+    </main>
+    
+    <script src="script.js"></script>
+</body>
+</html>

@@ -1,0 +1,148 @@
+/* ---------------------------------- */
+/* 1. 基础与背景样式 (保持不变)       */
+/* ---------------------------------- */
+:root {
+    --color-pink: #FF69B4;
+    --color-blue: #87CEEB;
+    --color-light: #F0F8FF; 
+    --color-white: #FFFFFF; 
+    --color-text-glow: rgba(255, 255, 255, 0.2); /* 降低文字辉光强度 */
+}
+
+body {
+    background-color: #000000; /* 纯深黑色 */
+    color: white;
+    font-family: 'Inter', sans-serif; 
+    margin: 0; padding: 0; overflow: hidden; height: 100vh;
+    display: flex; justify-content: center; align-items: flex-start; 
+    position: relative; perspective: 1000px;
+}
+
+#starfield {
+    position: fixed; top: 0; left: 0; width: 100%; height: 100%; z-index: -2;
+}
+body::before {
+    /* 极度弱化的颗粒感，只提供高级质感 */
+    content: ''; position: fixed; top: 0; left: 0; right: 0; bottom: 0;
+    background-image: radial-gradient(var(--color-light) 1px, transparent 0);
+    background-size: 4px 4px;
+    pointer-events: none; z-index: -1; opacity: 0.01; /* 几乎不可见 */
+}
+
+/* ---------------------------------- */
+/* 2. 核心内容与布局 (保持不变)       */
+/* ---------------------------------- */
+.header {
+    position: absolute; top: 30px; right: 50px; z-index: 20;
+}
+.login-button {
+    color: var(--color-light); padding: 8px 18px;
+    background: transparent; border: 1px solid var(--color-light);
+    border-radius: 0; 
+    transition: all 0.3s ease; text-decoration: none; font-size: 0.9rem;
+}
+.login-button:hover {
+    box-shadow: 0 0 10px rgba(var(--color-pink), 0.5); 
+    border-color: var(--color-pink); color: var(--color-pink);
+}
+
+.main-content {
+    display: flex; flex-direction: column; align-items: center; z-index: 10;
+    width: 90%; max-width: 900px;
+    margin-top: 15vh;
+}
+
+/* 网页名: 渡识 DoShare - 字体质感修正 */
+.site-title {
+    font-size: 5rem; font-weight: 800; margin-bottom: 50px; letter-spacing: 15px;
+    color: white; 
+    /* 移除所有可能导致“诡异光晕”的强烈 text-shadow，只留下极弱的氛围光 */
+    text-shadow: 
+        0 0 8px var(--color-text-glow),
+        0 0 15px rgba(135, 206, 235, 0.1), /* 极弱的蓝光 */
+        0 0 20px rgba(255, 105, 180, 0.05); /* 几乎不可察觉的粉光 */
+    animation: title-pulse 4s infinite alternate ease-in-out;
+}
+
+/* ---------------------------------- */
+/* 3. 搜索框样式 (保持简洁棱角)       */
+/* ---------------------------------- */
+.search-area {
+    display: flex; width: 80%; max-width: 650px; margin-bottom: 80px;
+    background: transparent; border-radius: 0; padding: 4px;
+    border: 1px solid var(--color-white); /* 纯白色边框 */
+    box-shadow: none; 
+    transition: all 0.3s ease;
+}
+
+.search-area:focus-within {
+    border-color: var(--color-blue);
+    box-shadow: 0 0 15px var(--color-blue);
+}
+
+.search-input {
+    flex-grow: 1; background: transparent; color: var(--color-white);
+    padding: 10px 20px; font-size: 1rem; border: none; outline: none;
+}
+
+.search-button {
+    background: transparent; color: var(--color-white); /* 纯白色图标 */
+    border: none; border-radius: 0; padding: 10px 20px; cursor: pointer;
+    font-size: 1rem; transition: all 0.3s ease;
+}
+.search-button:hover {
+    color: var(--color-pink);
+}
+
+/* ---------------------------------- */
+/* 4. 泡泡组件 (核心修正：圆形、白色边缘、柔和光晕) */
+/* ---------------------------------- */
+.bubbles-container {
+    display: flex; justify-content: space-around; width: 90%;
+}
+
+.bubble {
+    width: 160px;
+    height: 160px;
+    /* 核心修正：恢复为圆形 */
+    border-radius: 50%; 
+    
+    /* 核心修正：纯透明背景 */
+    background: transparent; 
+    /* 纯白色边缘 */
+    border: 1px solid var(--color-light); 
+    
+    /* 移除所有强烈的 box-shadow。只保留白色边缘和极弱的彩色光晕 */
+    box-shadow: 
+        /* 柔和的彩色光晕，极低的透明度 (0.1) */
+        0 0 10px 1px rgba(var(--bubble-color-1), 0.1), 
+        0 0 10px 1px rgba(var(--bubble-color-2), 0.1);
+        
+    color: var(--color-light);
+    text-decoration: none;
+    display: flex; justify-content: center; align-items: center;
+    font-size: 1.1rem; font-weight: 500;
+    transition: all 0.5s ease;
+    animation: bubble-float 10s infinite alternate ease-in-out;
+}
+
+.bubble:hover {
+    transform: scale(1.05);
+    /* 悬停时增强光晕 */
+    box-shadow: 
+        0 0 15px 2px rgba(var(--bubble-color-1), 0.3), /* 增强至 0.3 透明度 */
+        0 0 15px 2px rgba(var(--bubble-color-2), 0.3),
+        0 0 20px rgba(255, 255, 255, 0.2); /* 增加白色柔光 */
+}
+
+/* 泡泡漂浮动画 (保持不变) */
+@keyframes bubble-float {
+    0% { transform: translate(0, 0); }
+    50% { transform: translate(10px, -10px); }
+    100% { transform: translate(-10px, 10px); }
+}
+
+/* 定义虹彩颜色 (不变) */
+.bubble-1 { --bubble-color-1: 135, 206, 235; --bubble-color-2: 255, 105, 180; }
+.bubble-2 { --bubble-color-1: 255, 255, 224; --bubble-color-2: 100, 149, 237; animation-delay: -2s; }
+.bubble-3 { --bubble-color-1: 255, 105, 180; --bubble-color-2: 255, 255, 255; animation-delay: -4s; } 
