@@ -1,0 +1,60 @@
+{
+  "name": "Dataset",
+  "type": "object",
+  "properties": {
+    "title": {
+      "type": "string",
+      "description": "Dataset title"
+    },
+    "description": {
+      "type": "string",
+      "description": "Brief description of the dataset"
+    },
+    "category": {
+      "type": "string",
+      "enum": [
+        "Economics",
+        "Social Science",
+        "Health",
+        "Environment",
+        "Technology",
+        "Education",
+        "Demographics"
+      ],
+      "description": "Dataset category"
+    },
+    "size": {
+      "type": "string",
+      "description": "Dataset size (e.g., 10K rows)"
+    },
+    "format": {
+      "type": "string",
+      "enum": [
+        "CSV",
+        "JSON",
+        "Excel",
+        "Parquet"
+      ],
+      "description": "File format"
+    },
+    "downloads": {
+      "type": "number",
+      "description": "Number of downloads"
+    },
+    "thumbnail_url": {
+      "type": "string",
+      "description": "Thumbnail image URL"
+    },
+    "tags": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "description": "Related tags"
+    }
+  },
+  "required": [
+    "title",
+    "category"
+  ]
+}

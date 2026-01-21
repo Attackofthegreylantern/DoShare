@@ -1,0 +1,25 @@
+{
+  "name": "Course",
+  "type": "object",
+  "properties": {
+    "title": {
+      "type": "string",
+      "description": "Course title"
+    },
+    "progress": {
+      "type": "number",
+      "description": "Progress percentage (0-100)"
+    },
+    "instructor": {
+      "type": "string",
+      "description": "Course instructor name"
+    },
+    "color": {
+      "type": "string",
+      "description": "Accent color for the course card"
+    }
+  },
+  "required": [
+    "title"
+  ]
+}
